@@ -1,0 +1,268 @@
+* {
+	font-family: "Helvetica", "Arial", sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	color: #8C7A6B;
+	display: grid;
+	gap: 0;
+	grid-template: auto 1fr 60px / 1fr;
+	grid-template-areas:
+		"hd"
+		"main"
+		"ft";
+}
+
+header {
+	grid-area: hd;
+}
+
+@media(min-width:601px) {
+	/***
+	*Specify nav tag throughout to avoid accidentally selecting elements in the
+	*main content area.
+	***/
+
+	nav a {
+	  text-decoration: none;
+		font-weight: bold;
+	}
+
+	nav {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+		height: 100px;
+		background-color: #efe88e;
+	}
+
+	nav ul {
+	  background: #efe88e;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+	}
+
+	.main-nav-list {
+	  padding-top: 50px;
+	}
+
+	nav li {
+	  background: #efe88e;
+		display: block;
+		float: left;
+		padding: 1em;
+		position: relative;
+		text-decoration: none;
+	  transition-duration: 0.5s;
+	}
+
+	nav li:hover {
+		background: red;
+		cursor: pointer;
+	}
+
+	nav ul li ul {
+		background: orange;
+		visibility: hidden;
+		z-index: 1;
+	  min-width: 5em;
+		position: absolute;
+	  transition: all 0.5s ease;
+	  margin-top: 1em;
+		left: 0;
+	  display: none;
+	}
+
+	nav ul li:hover > ul,
+	ul li ul:hover {
+	  visibility: visible;
+	  display: block;
+	}
+
+	nav ul li ul li {
+		clear: both;
+	  width: 100%;
+	}
+}
+
+.donate-btn {
+  float: right;
+}
+
+#logo {
+  background-color: #efe88e;
+	float: left;
+	margin-right: 5px;
+	margin-top: 3px;
+	padding-left: 10px;
+}
+
+.slideshow {
+  background-color: #ccc;
+  width: 768px;
+  height: 512px;
+  margin:0 auto;
+  margin-top: 5px;
+  overflow:hidden;
+}
+
+.slide-container {
+  height: 512px;
+  width: 2316px; /*slide width + padding * number of slides*/
+  background-color: #ccc;
+}
+
+.slide-container:hover {
+  animation-play-state: paused;
+}
+
+.slide {
+  position: relative;
+  display: inline-block;
+  animation: slide 14s ease infinite;
+}
+
+.slider-image {
+  padding:0;
+  height: auto;
+  width: 768px;
+  display: inline;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0px);
+  }
+
+  10%,20%,30% {
+    transform: translateX(0px);
+  }
+  33.3% {
+    transform: translateX(-772px);
+  }
+  40%,50%,60%,62% {
+    transform: translateX(-772px);
+  }
+  66% {
+    transform: translateX(-1544px);
+  }
+  100% {
+    transform: translateX(-1544px);
+  }
+
+}
+
+main {
+	/*margin-bottom by footer height*/
+	color: #000;
+	margin-bottom: 60px;
+	grid-area: main;
+}
+
+footer{
+	/*sticky footer that stays at the bottom of the window but doesn't cover
+	main content*/
+	grid-area: ft
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	height:60px;
+	/*Setting line-height to container height vertically centers text.*/
+	line-height: 60px;
+	background-color: #e0e0e0;
+	text-decoration: bold;
+}
+
+.sign-board {
+	width: 60%;
+	margin:auto;
+}
+.sign-board > h1 {
+	text-align: center;
+}
+
+/*hide mobile nav in desktop mode*/
+@media(min-width:601px) {
+	.nav-btn {
+		display: none;
+	}
+}
+
+/*mobile navbar*/
+@media (max-width:600px) {
+	#logo {
+		display: none;
+	}
+
+	.slideshow {
+		display: none;
+	}
+
+	.sign-board {
+		width: 100%;
+		margin:auto;
+	}
+
+	.sign-board > h1 {
+		text-align: center;
+	}
+
+	nav {
+		width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
+		background-color: #fff;
+	}
+
+	.nav-btn {
+		display: inline-block;
+		height: 50px;
+		width: 50px;
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+
+	.nav-btn > span {
+		padding-top: 10px;
+		display: block;
+		width: 50px;
+		height 12px;
+		border-top: 2px solid black;
+	}
+
+	.main-nav-list {
+		display: none;
+		padding-top: 5px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	nav li {
+		background: linear-gradient(#ada996, #f2f2f2, #dbdbdb, #eaeaea);
+		/*border-bottom: 1px solid grey;*/
+	}
+
+	nav a {
+	  font-weight: bold;
+		text-decoration: none;
+		text-align: center;
+	}
+
+
+	.donate-btn {
+		/*temporary until the show nav button works*/
+		display: none;
+	  float: right;
+	}
+
+}
