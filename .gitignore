@@ -32,3 +32,5 @@ coverage.xml
 #databases
 migrations/
 app.db
+dans_macabre.py #data entry script. Filename is an inside joke
+yahrtzeits.csv #Data file imported into app.db
