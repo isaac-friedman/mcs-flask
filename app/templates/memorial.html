@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="memorial">
+  {% for plaque in plaques %}
+    <div class="plaque">
+      <span class='name'>{{ plaque['first_name'] }} {{plaque['last_name']}}</span><br />
+      <span class='date'>{{ plaque['secular_death_date'] }}</span>
+    </div>
+  {% endfor %}
+<div id="memorial">
+{% endblock %}

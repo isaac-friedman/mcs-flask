@@ -1,8 +1,8 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 from werkzeug.urls import url_parse
 from app import app
-#from app import db
-#from app.models import Deceased
+from app import db
+from app.models import Deceased
 from datetime import datetime
 
 @app.route('/')
@@ -28,14 +28,10 @@ def yamnik():
 
 @app.route('/memorial', methods=["GET", "POST"])
 def memorial():
-    '''
-        plaques = []
-        #records = Deceased.query.all()
-        records = db.session.query(Deceased).order_by(Deceased.full_name)
-        for record in records:
-            send_date = f'{record.secular_death_date:%A} {record.secular_death_date:%B} {record.secular_death_date.day}, {record.secular_death_date.year}'
-            plaques.append({"first_name" : record.first_name, "last_name" : record.last_name, "secular_death_date" : send_date})
-            print(plaques)
-        return render_template('memorial.html', plaques=plaques)
-    '''
-    return "Db in progress. Memorials will be up soon."
+    plaques = []
+    records = db.session.query(Deceased).order_by(Deceased.full_name)
+    for record in records:
+        send_date = f'{record.secular_death_date:%A} {record.secular_death_date:%B} {record.secular_death_date.day}, {record.secular_death_date.year}'
+        plaques.append({"first_name" : record.first_name, "last_name" : record.last_name, "secular_death_date" : send_date})
+        print(plaques)
+    return render_template('memorial.html', plaques=plaques)
