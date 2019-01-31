@@ -33,5 +33,4 @@ def memorial():
     for record in records:
         send_date = f'{record.secular_death_date:%A} {record.secular_death_date:%B} {record.secular_death_date.day}, {record.secular_death_date.year}'
         plaques.append({"first_name" : record.first_name, "last_name" : record.last_name, "secular_death_date" : send_date, "jewish_death_date": record.jewish_death_date})
-        print(plaques)
     return render_template('memorial.html', plaques=plaques)
