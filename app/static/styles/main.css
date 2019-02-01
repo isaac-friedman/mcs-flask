@@ -178,12 +178,10 @@ main {
 	grid-gap: 10px;
 }
 .plaque {
-	height: 90px;
-	/*width: 500px;*/
+	height: 120px;
 	border-radius: 3px;
 	text-align: center;
 	overflow: hidden;
-	/*background-color: #FFD700;*/
 	background-color: hsl(65,100%,68%);
 }
 .name {
